@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Arapey" rel="stylesheet">
+    <title>Skiing Madness</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <nav id="nav">
+        <h1 class="nav__title"><span>skiing</span> madness</h1>
+        <div class="nav__cartBtn">
+            <p class="nav__ammout">0</p>
+        </div>
+    </nav>
+
+    <header id="banner">
+        <div class="banner">
+            <h1>Ski Board's Offer</h1>
+            <button class="banner__button">Let's Shop</button>
+        </div>
+    </header>
+
+    <section id="shop">
+        <h1>Ski Board's</h1>
+
+        <div class="shop__productContainer">
+            <!-- Here will be added all products from localStorage/database to the main shop container-->
+        </div>
+    </section>
+
+    <section id="cart" class="cart">
+        <div class="cart__customerCart">
+            <p class="cart__closeBtn">X</p>
+
+            <h2>Your Cart</h2>
+
+            <div class="cart__content">
+                <!-- Here will be shown products added to cart by customer-->
+            </div>
+            <div class="cart__summary">
+                <h3>Total price: <span class="cart__summary--total">0$</span></h3>
+                <button class="cart__summary--btnClear">CLEAR</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2020 SKIING MADNESS Polska</p>
+        <div class="footer__infoList">
+            <ul>
+                <li>Shopping Informations</li>
+                <li><a href="#">Delivery</a></li>
+                <li><a href="#">Payments</a></li>
+                <li><a href="#">Complaints</a></li>
+                <li><a href="#">Returns or exchange</a></li>
+            </ul>
+            <ul>
+                <li>General</li>
+                <li><a href="#">Regulations</a></li>
+                <li><a href="#">Personal data and cookies</a></li>
+                <li><a href="#">About SM</a></li>
+                <li><a href="#">Career</a></li>
+            </ul>
+        </div>
+    </footer>
+
+
+    
+    <script src="js/main.js"></script>
+    <script src="js/UI.js"></script>
+    <script src="js/Storage.js"></script>
+    <script src="js/Products.js"></script>
+</body>
+
+</html>
