@@ -2,4 +2,4 @@ Simple online ski shop created with vanilla JS, SASS/SCSS, HTML. Project is base
 
 *contentful.com* is responsible for products storage.
 
-Play with the portal on: https://kamilrsobczak.github.io/Online-Shop/index.html
+Play with the portal on: https://kamilrsobczak.github.io/Online-Shop/
