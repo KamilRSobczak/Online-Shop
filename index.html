@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Arapey" rel="stylesheet">
     <title>Skiing Madness</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+
 </head>
 
 <body>
@@ -21,21 +23,34 @@
     <header id="banner">
         <div class="banner">
             <h1>Ski Board's Offer</h1>
-            <button class="banner__button">Let's Shop</button>
+            <button class="banner__button">Let's Shop</button> 
         </div>
     </header>
 
     <section id="shop">
+        <div class="swiper-container shop__bannerSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"> <p>Attractive Prices</p></div>
+                <div class="swiper-slide"><p>Unique Design</p></div>
+                <div class="swiper-slide"><p>Free Shipping</p></div>
+            </div>
+        </div>
+
+        <div id="template" style="display: none;">
+            <strong>Bolded content</strong>
+        </div>
+          
         <h1>Ski Board's</h1>
 
         <div class="shop__productContainer">
+
             <!-- Here will be added all products from localStorage/database to the main shop container-->
         </div>
     </section>
 
     <section id="cart" class="cart">
         <div class="cart__customerCart">
-            <p class="cart__closeBtn">X</p>
+            <p class="cart__closeBtn closeBtn">X</p>
 
             <h2>Your Cart</h2>
 
@@ -69,12 +84,15 @@
         </div>
     </footer>
 
-
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/UI.js"></script>
     <script src="js/Storage.js"></script>
     <script src="js/Products.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/Swiper.js"></script>
 </body>
 
 </html>

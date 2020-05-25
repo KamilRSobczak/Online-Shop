@@ -6,15 +6,34 @@ class UI {
         products.forEach(products => {
             result += `
             <div class="shop__singleProduct">
+            <button class="shop__info" data-template="popup_${products.id}" data-id="${products.id}"></button>
                 <div class="shop__imgContainer">
+                    <div id="popup_${products.id}" class="shop__porductDesc" style="display: none;">
+                    
+
+                    <div class="shop__porductDescContainer">
+                    <h1>${products.title} <span class="shop__backBtn"></span></h1>
+                    
+                    <div>
+                        <img src="${products.image}">
+                        <p>
+                            <span>Price $${products.price}</span></br>
+                            "${products.desc}"
+                        </p>
+                    </div>
+                </div>
+              </div>
+                    
+
                     <img src=${products.image}>
                     <button class="shop__cartButton" data-id="${products.id}">
                         <div></div>Add to cart
                     </button>
                 </div>
                 <h2>${products.title}</h2>
-                <p>Price $${products.price}</p>
+                <p>Price $${products.price}</p> 
             </div>
+            
             `;
         });
 
@@ -46,15 +65,37 @@ class UI {
 
                 //set values
                 this.setCartValues(cartItems);
-                
+
                 // display item in cart
                 this.addCartItem(cartItem);
-                
+
                 // show items in customer cart
                 this.customerCart();
             });
 
         })
+    }
+
+    addItemToCart(itemId) {
+        const button = document.querySelectorAll('.shop__cartButtons_' + itemId);
+        id = button.dataset.id;
+        //To get single product from list
+        let cartItem = { ...Storage.getProducts(id), amount: 1 };
+
+        // add product to the customer cart
+        cartItems = [...cartItems, cartItem];
+
+        // save in storage (local)
+        Storage.saveCustomerCart(cartItems);
+
+        //set values
+        this.setCartValues(cartItems);
+
+        // display item in cart
+        this.addCartItem(cartItem);
+
+        // show items in customer cart
+        this.customerCart();
     }
 
     setCartValues(cartItems) {
@@ -89,6 +130,53 @@ class UI {
                         <div class="button__arrowDown" data-id=${item.id}></div>
                     </div>`;
         cartContent.appendChild(div);
+    }
+
+    getInfoButtons() {
+        const btnInfo = [...document.querySelectorAll(".shop__info")];
+        const btnsClose = [...document.querySelectorAll(".shop__backBtn")];
+        const prodDesc = [...document.querySelectorAll(".shop__porductDesc")];
+        const btnsButton = [...document.querySelectorAll(".shop__button")];
+
+
+        btnInfo.forEach(button => {
+            button.addEventListener('mouseover', (event) => {
+                let id = button.dataset.id;
+                const template = document.getElementById('popup_' + id);
+
+                tippy(event.target, {
+                    content: template.innerHTML,
+                    allowHTML: true,
+                    hideOnClick: false,
+                    interactive: true,
+                    theme: 'domain',
+                });
+            });
+
+        })
+
+
+        btnsClose.forEach(button => {
+            let id = button.dataset.id;
+            button.addEventListener('click', (event) => {
+                this.closeShopInfo(event, id);
+            });
+        })
+
+        prodDesc.forEach(button => {
+            let id = button.dataset.id;
+            button.addEventListener('click', (event) => {
+                this.closeShopInfo(event, id);
+            });
+        })
+    }
+
+    // Close cart when you click on X or outside of popup
+    closeCartPopup() {
+        if (event.target.classList.contains('cart')) {
+            cart.classList.remove('showCustomerCartContainer');
+            cartDOM.classList.remove('showCustomerCart');
+        }
     }
 
     customerCart() {
@@ -127,6 +215,7 @@ class UI {
         this.poppulate(cartItems);
         cartBtn.addEventListener('click', this.customerCart);
         closeBtn.addEventListener('click', this.customerCart);
+        cart.addEventListener('click', this.closeCartPopup);
         bannerBtn.addEventListener('click', this.scrollToShop);
         titleBtn.addEventListener('click', this.scrollToBanner);
     }

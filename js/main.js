@@ -9,16 +9,18 @@ const client = contentful.createClient({
 let cartItems = [];
 
 // other vars
-const cartBtn = document.querySelector('.nav__cartBtn'); // cart-btn
-const closeBtn = document.querySelector('.cart__closeBtn'); // close-cart
+const cartBtn = document.querySelector('.nav__cartBtn'); 
+const closeBtn = document.querySelector('.closeBtn'); 
 const removeItem = document.querySelector('.cart__removeItem');
-const clearCartItems = document.querySelector('.cart__summary--btnClear'); // clear-cart
-const cartDOM = document.querySelector('.cart__customerCart'); //cart
-const cart = document.querySelector('.cart'); //cart-overley
-const navAmmout = document.querySelector('.nav__ammout'); //cart-items
-const cartTotal = document.querySelector('.cart__summary--total'); //cart-total
-const cartContent = document.querySelector('.cart__content'); //cart-content
-const productDOM = document.querySelector('.shop__productContainer'); //products-center
+const clearCartItems = document.querySelector('.cart__summary--btnClear'); 
+const cartDOM = document.querySelector('.cart__customerCart'); 
+const cart = document.querySelector('.cart'); 
+const navAmmout = document.querySelector('.nav__ammout'); 
+const cartTotal = document.querySelector('.cart__summary--total'); 
+const cartContent = document.querySelector('.cart__content'); 
+const productDOM = document.querySelector('.shop__productContainer'); 
+const shopInfo = document.querySelector('.shop__info'); 
+const popupCloseBtn = document.querySelector('.shop__popupClose'); 
 const bannerBtn = document.querySelector('.banner__button');
 const titleBtn = document.querySelector('.nav__title');
 
@@ -35,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         Storage.saveProduct(products);
     }).then(() => {
         ui.getBagButtons();
+        ui.getInfoButtons();
         ui.cartLogic();
     });
 });
